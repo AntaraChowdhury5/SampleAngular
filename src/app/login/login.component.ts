@@ -9,13 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent {
   signUpUsers: any[] = [];
-  signUpForm:any = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
+  
   logInForm:any={
     email:'',
     password:''
@@ -28,18 +22,7 @@ export class LoginComponent {
       this.signUpUsers = JSON.parse(localData);
     }
   }
-  signUpUser(value: any) {
-    console.log(value)
-    this.signUpUsers.push(this.signUpForm);
-    localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUsers));
-    this.signUpForm = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    }
-  }
+  
   logInUser(value: any) {
     console.log(value)
     const isUserExist = this.signUpUsers.find(m => m.email == this.logInForm.email && m.password == this.logInForm.password);

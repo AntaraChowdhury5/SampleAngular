@@ -1,0 +1,35 @@
+<form #signupForm="ngForm" (ngSubmit)="signUpUser(signupForm.value)">
+    <mat-form-field>
+      <input matInput required placeholder="First Name" #firstName="ngModel" name="firstName" [(ngModel)]="signUpForm.firstname">
+      <mat-error *ngIf="firstName.invalid && firstName.touched">Please enter first name</mat-error>
+      <mat-icon matSuffix>perm_identity</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput required placeholder="Last Name" #lastName="ngModel" name="lastName" [(ngModel)]="signUpForm.lastname">
+      <mat-error *ngIf="lastName.invalid && lastName.touched">Please enter last name</mat-error>
+      <mat-icon matSuffix>perm_identity</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="email" required placeholder="Email / Phone No." #email="ngModel" email name="email" [(ngModel)]="signUpForm.email">
+      <mat-error *ngIf="email.invalid && email.touched">Please enter a valid Email</mat-error>
+      <mat-error *ngIf="signUpForm.email.invalid">Email is required</mat-error>
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" required placeholder="Password" #password="ngModel"
+      minlength="6" name="password" [(ngModel)]="signUpForm.password">
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" required placeholder="Confirm Password" #confirmPassword="ngModel"
+        name="confirmPassword"
+        [(ngModel)]="signUpForm.confirmPassword"
+      />
+    </mat-form-field>
+    <div *ngIf="signUpForm.submitted && signUpForm.password !== signUpForm.confirmPassword">
+      Passwords do not match.
+    </div>
+    <button mat-raised-button color="accent" class="login-button" [disabled]="signupForm.invalid">
+      Sign Up
+    </button>
+  </form>

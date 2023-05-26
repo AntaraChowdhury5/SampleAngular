@@ -1,0 +1,26 @@
+.main-div mat-card{
+    padding: 0px;
+}
+.reg-page {
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 88%;
+    display: block;
+    background-color: #e99bcc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+  }
+  
+  mat-card {
+    width: 30%;
+    margin: 1% auto;
+    border-radius: 8px;
+  }
+  
+  mat-card-content {
+    margin-top: 10px;
+  }

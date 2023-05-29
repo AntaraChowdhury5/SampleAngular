@@ -22,6 +22,7 @@ export class LoginComponent {
       this.signUpUsers = JSON.parse(localData);
     }
   }
+<<<<<<< HEAD
  
   // logInUser(value: any) {
   //   console.log(value)
@@ -33,6 +34,9 @@ export class LoginComponent {
   //     alert("Wrong Credential!")
   //   }
   // }
+=======
+  
+>>>>>>> 024b8d89ab1905a7fd396cb61c59eb73548edd24
   logInUser(value: any) {
   //this.isSubmitClicked = true;
 

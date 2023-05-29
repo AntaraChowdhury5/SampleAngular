@@ -9,13 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent {
   signUpUsers: any[] = [];
-  signUpForm:any = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
+  
   logInForm:any={
     email:'',
     password:''
@@ -28,26 +22,45 @@ export class LoginComponent {
       this.signUpUsers = JSON.parse(localData);
     }
   }
-  signUpUser(value: any) {
-    console.log(value)
-    this.signUpUsers.push(this.signUpForm);
-    localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUsers));
-    this.signUpForm = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    }
-  }
+ 
+  // logInUser(value: any) {
+  //   console.log(value)
+  //   const isUserExist = this.signUpUsers.find(m => m.email == this.logInForm.email && m.password == this.logInForm.password);
+  //   if (isUserExist) {
+  //     alert("User Login Successfully....")
+  //   }
+  //   else {
+  //     alert("Wrong Credential!")
+  //   }
+  // }
   logInUser(value: any) {
-    console.log(value)
-    const isUserExist = this.signUpUsers.find(m => m.email == this.logInForm.email && m.password == this.logInForm.password);
-    if (isUserExist) {
-      alert("User Login Successfully....")
+  //this.isSubmitClicked = true;
+
+    if(this.logInForm.invalid){
+
+      return;
+
     }
-    else {
-      alert("Wrong Credential!")
+
+    const signInEmail = this.logInForm.get('email')?.value;
+
+    const signInPassword = this.logInForm.get('password')?.value;
+
+    const storedEmail = localStorage.getItem('email');
+
+    const storedPassword = localStorage.getItem('password')
+
+    if (signInEmail === storedEmail && signInPassword === storedPassword) {
+
+     console.log("Authentication sucesss")
+
+    } else {
+
+      this.logInForm.controls['password'].setErrors({ incorrectCredentials: true });
+
+      console.log('Authentication failed');
+
     }
-  }
+
+}
 }
